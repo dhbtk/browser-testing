@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'posts', type: :system do
-  let(:post) { create(:post) }
+RSpec.describe 'posts', type: :feature do
+  before do
+    create(:post)
+  end
 
   it 'shows the index' do
     visit posts_path
@@ -12,8 +14,8 @@ RSpec.describe 'posts', type: :system do
     visit posts_path
     click_on "New Post"
 
-    fill_in "Content", with: post.content
-    fill_in "Title", with: post.title
+    fill_in "Content", with: 'New post content'
+    fill_in "Title", with: 'New post title'
     click_on "Create Post"
 
     expect(page).to have_text("Post was successfully created")
@@ -25,8 +27,8 @@ RSpec.describe 'posts', type: :system do
     visit posts_path
     click_on "Edit", match: :first
 
-    fill_in "Content", with: post.content
-    fill_in "Title", with: post.title
+    fill_in "Content", with: 'New post content'
+    fill_in "Title", with: 'New post title'
     click_on "Update Post"
 
     expect(page).to have_text("Post was successfully updated")
