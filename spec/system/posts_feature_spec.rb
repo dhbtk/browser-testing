@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'posts', type: :system do
-  let(:post) { create(:post) }
+  let!(:post) { create(:post) }
 
   it 'shows the index' do
     visit posts_path
