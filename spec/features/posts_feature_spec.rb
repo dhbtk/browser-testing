@@ -45,4 +45,10 @@ RSpec.describe 'posts', type: :feature do
     expect(page).to have_text("Post was successfully destroyed")
     expect(page).to have_current_path(posts_path)
   end
+
+  it 'fails and shows a screenshot' do
+    visit posts_path
+
+    expect(1).to eq(0)
+  end
 end
