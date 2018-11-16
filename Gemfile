@@ -30,6 +30,7 @@ end
 # This is all added by default in rails >= 5.1
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
