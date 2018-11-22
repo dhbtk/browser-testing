@@ -15,7 +15,7 @@ And(/^the text "([^"]*)" must be showing$/) do |arg|
 end
 
 And(/^the post ([^ ]*) must be showing$/) do |method|
-  page.has_content? @post.send(:method)
+  page.has_content? @post.send(method)
 end
 
 And(/^clicking the link "([^"]*)"$/) do |text|
