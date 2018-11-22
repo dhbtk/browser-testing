@@ -50,10 +50,7 @@ RSpec.describe 'posts', type: :system do
     expect(page).to have_current_path(posts_path)
   end
   
-  it 'create a new post in a resized window' do
-    window = Capybara.current_session.current_window
-    # Width, height
-    window.resize_to(320, 400)
+  it 'create a new post in a resized window', resolution: :mobile do
     visit posts_path
     click_on "New Post"
     post_content = 'New Content'
