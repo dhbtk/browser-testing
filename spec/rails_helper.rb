@@ -65,4 +65,12 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each, type: :feature) do
+    Capybara.current_session.current_window.resize_to 1400, 1400
+  end
+
+  config.before(:each, resolution: :mobile) do
+    Capybara.current_session.current_window.resize_to 480, 960
+  end
 end
