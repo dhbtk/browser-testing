@@ -56,6 +56,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless
+    driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+    Capybara.current_session.current_window.resize_to 1400, 1400
+  end
+  config.before(:each, resolution: :mobile) do
+    driven_by :selenium_chrome_headless, screen_size: [480, 960]
+    Capybara.current_session.current_window.resize_to 480, 960
   end
 end

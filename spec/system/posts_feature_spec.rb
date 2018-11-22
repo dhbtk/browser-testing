@@ -8,6 +8,12 @@ RSpec.describe 'posts', type: :system do
     expect(page).to have_selector('h1', text: 'Posts')
   end
 
+  it 'shows the index on mobile', resolution: :mobile do
+    visit posts_path
+    expect(page).to have_selector('h1', text: 'Posts')
+    take_screenshot
+  end
+
   it 'creates a post' do
     visit posts_path
     click_on "New Post"
