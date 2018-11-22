@@ -51,4 +51,17 @@ RSpec.describe 'posts', type: :feature do
 
     expect(1).to eq(0)
   end
+
+  it 'creates a post on mobile', resolution: :mobile do
+    visit posts_path
+    click_on "New Post"
+
+    fill_in "Content", with: 'New post content'
+    fill_in "Title", with: 'New post title'
+    click_on "Create Post"
+
+    expect(page).to have_text("Post was successfully created")
+    click_on "Back"
+    expect(page).to have_current_path(posts_path)
+  end
 end
