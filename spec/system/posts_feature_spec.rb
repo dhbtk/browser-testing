@@ -43,4 +43,22 @@ RSpec.describe 'posts', type: :system do
     expect(page).to have_text("Post was successfully destroyed")
     expect(page).to have_current_path(posts_path)
   end
+  
+  it 'create a new post in a resized window' do
+    window = Capybara.current_session.current_window
+    # Width, height
+    window.resize_to(320, 400)
+    visit posts_path
+    click_on "New Post"
+    post_content = 'New Content'
+    post_title = 'New Title'
+
+    fill_in "Content", with: post_content
+    fill_in "Title", with: post_title
+    click_on "Create Post"
+
+    expect(page).to have_text("Post was successfully created")
+    click_on "Back"
+    expect(page).to have_current_path(posts_path)
+  end
 end
