@@ -11,11 +11,11 @@ When(/^visiting the post page$/) do
 end
 
 And(/^the text "([^"]*)" must be showing$/) do |text|
-  page.has_content? text
+  expect(page).to have_content(text)
 end
 
 And(/^the post ([^ ]*) must be showing$/) do |method|
-  page.has_content? @post.send(method)
+  expect(page).to have_content(@post.send(method))
 end
 
 And(/^clicking the link "([^"]*)"$/) do |text|
@@ -28,4 +28,14 @@ end
 
 And(/^clicking the button "([^"]*)"$/) do |name|
   click_button name
+end
+
+And(/^confirming the dialog after clicking "([^"]*)"$/) do |name|
+  accept_confirm do
+    click_link name
+  end
+end
+
+And(/^the text "([^"]*)" must not be showing$/) do |text|
+  expect(page).not_to have_content(text)
 end
